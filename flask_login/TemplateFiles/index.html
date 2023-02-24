@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<!--
+    Author: Andrew Roney
+-->
+
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"/>
+
+        <meta charset="UTF-8">
+        <meta name="author" content="Andrew Roney">
+        <meta name="description" content="website description here">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        
+        <!--PAGE HEADER-->
+        <div class="Page_Header">
+            <div id="datetime">
+                <h4>Timestamp: {{date}}</h4><!--{{date}} grabs the value of the variable date from render_template in the python script-->
+            </div>
+
+            <!--Navigation Bar: enable user to easily travel the website.-->
+            <div class="Navigation_Menu_Bar">
+                <nav>
+                    <a href="{{ url_for('index') }}">Home</a>
+                    <a href="{{ url_for('zoey_gallery') }}">Gallery</a>
+                    <a href="{{ url_for('zoey_about') }}">About</a>
+                </nav>
+            </div>
+
+            <!--Dynamic Active User element-->
+            <div class="Login_Register">
+                <h4 id="account-user"></h4><!--Username here-->
+                <a style="float: right" id="log-link"></a><!--Login or logout here-->
+            </div>
+        </div>
+        <!--END PAGE HEADER-->
+
+
+        <div class="Main_Body">
+            <h1 class="Page_Title">Zoey the Husky</h1>
+
+            <div id="index-img-block">
+                <img src="{{ url_for('static', filename='/Images/Images_Zoey/iz_portrait.jpg') }}" alt="Portrait of Zoey" width="auto" height="400px" style="margin: 0 auto 0 auto; display: block; border: 7px double black;border-radius: 10px;"/>
+            </div>
+
+            <p>Zoey the Siberian Husky.<br/>My first personal pet.</p>
+        </div><!--.Main_Body-->
+
+        <footer>
+            <p>Website created by Andrew L Roney</p>
+        </footer>
+
+
+
+        <!--Script for declare the variables with the python data-->
+        <script type="text/javascript"> 
+            var username = "{{ session.username }}"
+            var loginLink = "{{ url_for('login') }}"
+            var logoutLink = "{{ url_for('logout') }}"
+        </script>
+
+        <!--Script for taking the above variables and placing them in the mainJS.js file where it will dynamically change the signed in account display.-->
+        <script type="text/javascript" src="{{ url_for('static', filename='mainJS.js') }}"></script>
+    </body>
+</html>

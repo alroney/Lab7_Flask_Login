@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"/>
+        <script></script>
+        <style></style>
+
+        <meta charset="UTF-8">
+        <meta name="author" content="Andrew Roney">
+        <meta name="description" content="website description here">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <header class="Page_Header">
+            <div id="datetime">
+                <h4>Timestamp: {{date}}</h4><!--{{date}} grabs the value of the variable date from render_template in the python script-->
+            </div>
+
+            <!--Navigation Bar: enable user to easily travel the website.-->
+            <div class="Navigation_Menu_Bar">
+                <nav>
+                    <a href="{{ url_for('index') }}">Home</a>
+                    <a href="{{ url_for('zoey_gallery') }}">Gallery</a>
+                    <a href="{{ url_for('zoey_about') }}">About</a>
+                </nav>
+            </div>
+
+            <!--Dynamic Active User element-->
+            <div class="Login_Register">
+                <h4 id="account-user"></h4><!--Username here-->
+                <a style="float: right" id="log-link"></a><!--Login or logout here-->
+            </div>
+        </header>
+
+
+        <div class="Main_Body">
+            <div class="Main_Body">
+                <h2>Register</h2>
+                <form action="{{ url_for('register') }}" method="post">
+                    <div class="msg">{{ msg }}</div>
+                    Username:<input id="username" name="username" type="text" placeholder="Enter Your Username" /><br/>
+                    Password:<input id="password" name="password" type="password" placeholder="Enter Your Password" /><br/>
+                    Email:<input id="email" name="email" type="text" placeholder="Enter Your Email" /><br/><br/>
+                    <input type="submit" class="button" value="Sign Up" />
+                </form>
+                <p class="">Already have an account? <a class="NULL2" href="{{ url_for('login') }}">Sign In here</a></p>
+            </div>
+        </body>
+        </div>
+
+        <footer>
+            <p>Website created by Andrew L Roney</p>
+        </footer>
+
+
+
+        <!--Script for declare the variables with the python data-->
+        <script type="text/javascript"> 
+            var username = "{{ session.username }}"
+            var loginLink = "{{ url_for('login') }}"
+            var logoutLink = "{{ url_for('logout') }}"
+        </script>
+
+        <!--Script for taking the above variables and placing them in the mainJS.js file where it will dynamically change the signed in account display.-->
+        <script type="text/javascript" src="{{ url_for('static', filename='mainJS.js') }}"></script>
+    </body>
+</html>

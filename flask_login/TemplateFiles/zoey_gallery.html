@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gallery</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"/>
+        <script>
+            
+        </script>
+        <style>
+            table {
+                border: 1px solid black;
+                margin: auto;
+            }
+
+                table tr {
+                    border: 1px solid blue;
+                }
+
+                    table tr td {
+                        background: black;
+                        height: 100px;
+                        width: 100px;
+                        text-align: center;
+                        padding: 5px;
+                        overflow:auto;
+                    }
+                        table tr td img {
+                            position: relative;
+                        }
+                        table tr td p {
+                            position: relative;
+
+                        }
+            /*END IMAGE GRID*/
+        </style>
+
+        <meta charset="UTF-8">
+        <meta name="author" content="Andrew Roney">
+        <meta name="description" content="website description here">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <div class="Page_Header">
+            <div id="datetime">
+                <h4>Timestamp: {{date}}</h4><!--{{date}} grabs the value of the variable date from render_template in the python script-->
+            </div>
+
+            <!--Navigation Bar: enable user to easily travel the website.-->
+            <div class="Navigation_Menu_Bar">
+                <nav>
+                    <a href="{{ url_for('index') }}">Home</a>
+                    <a href="{{ url_for('zoey_gallery') }}">Gallery</a>
+                    <a href="{{ url_for('zoey_about') }}">About</a>
+                </nav>
+            </div>
+
+            <!--Dynamic Active User element-->
+            <div class="Login_Register">
+                <h4 id="account-user"></h4><!--Username here-->
+                <a style="float: right" id="log-link"></a><!--Login or logout here-->
+            </div>
+        </div>
+        <!--END PAGE HEADER-->
+        <div class="Main_Body">
+            <h1 class="Page_Title">Zoey's Gallery Hall</h1>
+            
+            <table id="image-grid">
+                <tr id="ig-col"><!--Row 1-->
+                    <!--ROW 1-->
+                    <td class="cell">
+                        <img src="{{url_for('static',filename='Images/Images_Zoey/iz_000.jpg') }}" alt="Image 1" width=200px height=auto /><!--COLUMN 1-->
+                    </td>
+                    <td class="cell"> 
+                        <img src="{{url_for('static',filename='Images/Images_Zoey/iz_001.jpg') }}" alt="Image 2" width=200px height=auto /><!--COLUMN 2-->
+                    </td>
+                    <td class="cell">
+                        <img src="{{url_for('static',filename='Images/Images_Zoey/iz_002.jpg') }}" alt="Image 3" width=200px height=auto /><!--COLUMN 3-->
+                    </td>
+                </tr>
+                <!--ROW 2-->
+                <tr id="ig-col">
+                    <td class="cell">
+                        <img src="{{url_for('static',filename='Images/Images_Zoey/iz_003.jpg') }}" alt="Image 4" width=200px height=auto />
+                    </td>
+                    <td class="cell">
+                        <img src="{{url_for('static',filename='Images/Images_Zoey/iz_004.jpg') }}" alt="Image 5" width=200px height=auto />
+                    </td>
+                    <td class="cell">
+                        <img src="{{url_for('static',filename='Images/Images_Zoey/iz_005.jpg') }}" alt="Image 6" width=200px height=auto />
+                    </td>
+                </tr>
+                <!--ROW 3-->
+                <tr id="ig-col">
+                    <td class="cell">
+                        <img src="{{url_for('static',filename='Images/Images_Zoey/iz_006.jpg') }}" alt="Image 7" width=200px height=auto />
+                    </td>
+                    <td class="cell">
+                        <img src="{{url_for('static',filename='Images/Images_Zoey/iz_007.jpg') }}" alt="Image 8" width=200px height=auto />
+                    </td>
+                    <td class="cell">
+                        <img src="{{url_for('static',filename='Images/Images_Zoey/iz_008.jpg') }}" alt="Image 9" width=200px height=auto />
+                    </td>
+                </tr>
+                <!--ROW 4-->
+                <tr id="ig-col">
+                    <td class="cell">
+                        <img src="{{ url_for('static', filename='Images/Images_Zoey/iz_009.jpg') }}" alt="Image 10" width="200px" height="auto" />
+                    </td>
+                    <td class="cell">
+                        <img src="{{ url_for('static', filename='Images/Images_Zoey/iz_010.jpg') }}" alt="Image 11" width="200px" height="auto" />
+                    </td>
+                    <td class="cell">
+                        <img src="{{ url_for('static', filename='Images/Images_Zoey/iz_011.jpg') }}" alt="Image 12" width="200px" height="auto" />
+                    </td>
+                </tr>
+            </table><!--END GRID-->
+        </div><!--END MAIN BODY-->
+
+        <footer>
+            <p>Website created by Andrew L Roney</p>
+        </footer>
+
+
+
+        <!--Script for declare the variables with the python data-->
+        <script type="text/javascript"> 
+            var username = "{{ session.username }}"
+            var loginLink = "{{ url_for('login') }}"
+            var logoutLink = "{{ url_for('logout') }}"
+        </script>
+
+        <!--Script for taking the above variables and placing them in the mainJS.js file where it will dynamically change the signed in account display.-->
+        <script type="text/javascript" src="{{ url_for('static', filename='mainJS.js') }}"></script>
+    </body>
+</html>

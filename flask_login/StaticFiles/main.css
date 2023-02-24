@@ -1,0 +1,152 @@
+html {
+    background: black;
+}
+
+body {
+    display: block;
+    position: absolute;
+    background: Linen;
+    border: 1px solid black;
+    
+    margin: 5px 10px 5px 10px; /*top right bottom left*/
+    padding: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+
+    min-height: fit-content;
+}
+
+/*===================================================================*/
+
+/*=====PAGE HEADING=====*/
+.Page_Header {
+    background: rgba(150,150,150, 0.60);
+    display: inline-block;
+    position: relative;
+    top: 0px;
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px black solid;
+}
+    /*Page_Header > datetime*/
+    #datetime {
+        position: absolute;
+        left: 10px;
+        top: 0px;
+        margin-bottom: 10px;
+        max-width: 25vw;
+        line-height: 20px;
+    }
+
+    
+    .Navigation_Menu_Bar {
+        display: block;
+        position: sticky; /*Stays on screen when scrolling*/
+        margin: 2vh 0vw 2vh 0vw; /*top right bottom left*/
+        top: 0px;
+    }
+        
+        nav {
+            display: block;
+            position: relative; /*Relative to Navigation_Menu_Bar measurements*/
+            background: rgba(200, 200, 255, 0.85);
+            border: 2px solid black;
+
+            margin: auto auto auto auto; /*top right bottom left*/
+            padding: 5px 0px;
+            width:fit-content;
+            box-shadow: 0px 5px 10px #000;
+            text-align: center;
+        }
+        
+        @media screen and (max-width: 640px) {/*Styling rule for smaller screens.*/
+            nav {
+                display: grid;
+                max-width: 50vw;
+            }
+            #datetime {
+                max-width: 20vw;
+            }
+        }
+
+
+        nav a {
+            display: inline-block;
+            position: relative;
+            border: 1px solid black;
+
+            margin: auto 10px auto 10px; /*top right bottom left*/
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            font-size: 1em;
+            font-weight: 700;
+        }
+
+        nav a:hover {
+            background: rgba(150, 150, 205, 1.00);
+            box-shadow: 0px 0px 10px 5px #fff;
+
+        }
+
+    .Login_Register {
+        position: absolute;
+        line-height: 10px;
+        right: 10px;
+        top: 0px;
+
+    }
+/*=====END PAGE HEADING=====*/
+
+/*===================================================================*/
+
+/*=====MAIN BODY=====*/
+.Main_Body {
+    margin: 20px auto 20px auto; /*top right bottom left*/
+    padding: 0px 0px 20px 0px; /*top right bottom left*/
+
+    border: black solid 1pt;
+
+    width: 70%;
+    max-height: auto;
+    max-width: 100%;
+    
+    background: rgba(210, 210, 210, .75);
+    z-index: 3;
+}
+    /* Main_Body > Page_Title */
+    .Main_Body .Page_Title{
+        margin: auto;
+        width: auto;
+        text-align: center;
+        font-size: 2.15em;
+    }
+    /* Main_Body > p */
+    .Main_Body p {
+        margin: auto auto 5px auto; /*top right bottom left*/
+        width: 85%;
+        text-align: center;
+        font-size: 1.15em;
+    }
+
+    @media screen and (max-width: 640px) {
+        .Main_Body {
+            width: 100%;
+        }
+
+    }
+/*=====END MAIN BODY=====*/
+
+/*=====FOOTER=====*/
+footer {
+    margin: 20px auto 20px auto; /*top right bottom left*/
+    padding: 0px 0px 20px 0px; /*top right bottom left*/
+
+    width: 70%;
+    max-height: auto;
+    max-width: 100%;
+
+    text-align: center;
+}
